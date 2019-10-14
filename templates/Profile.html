@@ -1,0 +1,114 @@
+{% extends 'Basic.html' %}
+{% load static %}
+
+{% block Title_Block %}
+    <title>Profile</title>
+{% endblock %}
+
+{% block Title_Icon_Block %}
+    <link rel="icon" type="image/png" href="{% static 'assets/img/profile.png' %}"/>
+{% endblock %}
+
+{% block Body_Block %}
+    <div class="boq" style="background-image: url({% static 'assets/img/iceland.jpg' %});">
+        <div class="by">
+            <div class="bor">
+                {% if qry_info %}
+                    {% for i in qry_info %}
+                        {% if i.Registration_ID == User_Id %}
+{#                            <img class="us bos" src="{% static 'assets/img/avatar-dhg.png' %}">#}
+                            <img class="us bos" src="media/Profile_Photos/{{ i.Profile_Photo }}" height="110px">
+                            <h3 class="bou">{{ i.FirstName | upper }}&nbsp;{{ i.LastName | upper}}</h3>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <p class="bot">
+                    I wish i was a little bit taller, wish i was a baller, wish i had a girl… also.
+                </p>
+            </div>
+        </div>
+
+        <nav class="bov">
+            <ul class="nav ph xm">
+                <li class="pi">
+                    <a class="pg active">Details</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                {% if qry_info %}
+                    {% for i in qry_info %}
+                        {% if i.Registration_ID == User_Id %}
+                            <form method="post" action="/{{ i.Registration_ID }}/Update_Profile">{% csrf_token %}
+                                <div class="modal-body">
+                                    <font color="black"><b>Email</b></font>
+                                    <input type="text" class="form-control" placeholder="First Name" name="txt_firstname" value="{{ i.Email }}" readonly>
+                                </div>
+                                <div class="modal-body">
+                                    <font color="black"><b>First-Name</b></font>
+                                    <input type="text" class="form-control" placeholder="First Name" name="txt_firstname" value="{{ i.FirstName }}" tabindex="1">
+                                </div>
+                                <div class="modal-body">
+                                    <font color="black "><b>Last-Name</b></font>
+                                    <input type="text" class="form-control" placeholder="Last Name" name="txt_lastname" value="{{ i.LastName }}" tabindex="2">
+                                </div>
+                                <div class="modal-body">
+                                    <font color="black"><b>Mobile No.</b></font>
+                                    <input type="text" class="form-control" placeholder="Mobile Number" name="txt_mobileno" value="{{ i.MobileNo }}" tabindex="3">
+                                </div>
+                                <div class="modal-actions">
+                                    <center>
+                                        <input type="submit" name="Update" value="Update" tabindex="5"
+                                                            style="background-color: #3097D1;border: none;color: white;
+                                                            padding: 7px 15px;text-align: center;text-decoration: none;
+                                                            display: inline-block;font-size: 16px;
+                                                            border-radius: 9px 9px 9px 9px;">
+                                        {% for msg in messages %}
+                                            <p style="color: red">{{ msg }}</p>
+                                        {% endfor %}
+                                    </center>
+                                </div>
+                            </form>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="modal">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                {% if qry_info %}
+                    {% for i in qry_info %}
+                        {% if i.Registration_ID == User_Id %}
+                            <form method="post" action="/{{ i.Registration_ID }}/Update_Image" enctype="multipart/form-data">{% csrf_token %}
+                                <div class="modal-body">
+                                    <font color="black"><b>Profile Photo.</b></font>
+                                    <input type="file" class="form-control" name="upload" tabindex="4" value="{{ i.Profile_Photo }}" required>
+                                </div>
+                                <div class="modal-body">
+                                    <font color="black"><b>Profile Photo.</b></font>
+                                    <img src="media/Profile_Photos/{{ i.Profile_Photo }}" height="95px">
+                                </div>
+                                <div class="modal-actions">
+                                    <center>
+                                        <input type="submit" name="Update" value="Update Profile" tabindex="5"
+                                                            style="background-color: #3097D1;border: none;color: white;
+                                                            padding: 7px 15px;text-align: center;text-decoration: none;
+                                                            display: inline-block;font-size: 16px;
+                                                            border-radius: 9px 9px 9px 9px;">
+                                    </center>
+                                </div>
+                            </form>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

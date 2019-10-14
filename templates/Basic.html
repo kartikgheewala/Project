@@ -1,0 +1,89 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    {% block Title_Block %}{% endblock %}
+    {% block Title_Icon_Block %}{% endblock %}
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <link href="{% static 'assets/css/toolkit.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/application.css' %}" rel="stylesheet">
+
+    <style>
+          body {
+            width: 1px;
+            min-width: 100%;
+            *width: 100%;
+          }
+    </style>
+</head>
+
+<body class="bob">
+    <div class="bon" id="app-growl"></div>
+    <nav class="ck pt adq py tk app-navbar">
+
+        <a class="e" href="/Home">
+            <img src="{% static 'assets/img/brand-white.png' %}" alt="brand">
+        </a>
+
+        <button
+            class="pp bpn vm"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="pq"></span>
+        </button>
+
+        <div class="collapse f" id="navbarResponsive">
+            <ul class="navbar-nav ahq">
+                <li class="pi active">
+                    <a class="pg" href="/Home">Home <span class="adt">(current)</span></a>
+                </li>
+                <li class="pi">
+                    <a class="pg" href="/Profile">Profile</a>
+                </li>
+    {#          <li class="pi vm">#}
+    {#            <a class="pg" href="{% static 'login/index.html' %}">Logout</a>#}
+    {#          </li>#}
+            </ul>
+
+            <ul id="#js-popoverContent" class="nav navbar-nav acx aek d-none vt">
+              <li class="pi afb">
+                <button class="cg bpo bpp boi" data-toggle="popover">
+                  <img class="us" src="{% static 'assets/img/avatar-dhg.png' %}">
+                </button>
+              </li>
+            </ul>
+
+            <ul class="nav navbar-nav d-none" id="js-popoverContent">
+    {#          <li class="pi"><a class="pg" href="{% static 'profile/index.html' %}">Profile</a></li>#}
+              <li class="pi"><a class="pg" href="/Logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    {% block Body_Block %}
+
+    {% endblock %}
+
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/chart.js' %}"></script>
+    <script src="{% static 'assets/js/toolkit.js' %}"></script>
+    <script src="{% static 'assets/js/application.js' %}"></script>
+    <script>
+         $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
+    </script>
+
+</body>
+</html>
