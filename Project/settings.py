@@ -136,8 +136,8 @@ MEDIA_URL = '/media/'
 # Email Configuration ----Start----
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'gheewalakartik@gmail.com'
-EMAIL_HOST_PASSWORD = 'Kartik007'
+EMAIL_HOST_USER = 'example@gmail.com'	#Enter your email
+EMAIL_HOST_PASSWORD = 'exmaple'		#Enter your email password
 EMAIL_PORT = 587
 # Email Configration ----Over
 
